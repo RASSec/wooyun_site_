@@ -1,0 +1,145 @@
+<include file="Public:header" />
+<DIV class=bread>
+<DIV style="FLOAT: left">当前位置：<A 
+href="http://www.蓝天白云.com">蓝天白云</A> &gt;&gt; <A 
+href="">首页</A></DIV>
+<STYLE>#scroll_box {
+	TEXT-ALIGN: right; PADDING-BOTTOM: 0px; MARGIN: 0px 15px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: right; HEIGHT: 24px; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+#scroll_box LI {
+	LINE-HEIGHT: 24px; LIST-STYLE-TYPE: none; LIST-STYLE-IMAGE: none
+}
+</STYLE>
+
+<UL id=scroll_box>
+  <LI><A 
+  href="#">蓝天白云开张喽</A></LI>
+</UL>
+<SCRIPT language=javascript>
+var o=document.getElementById('scroll_box');
+setInterval(function(){scrollup(o,24,0)},3000); 
+function scrollup(o,d,c){
+	if(d==c){
+		var t=getFirstChild(o.firstChild).cloneNode(true);
+		o.removeChild(getFirstChild(o.firstChild));
+		o.appendChild(t);
+		t.style.marginTop="0px";
+	}else{
+		c+=2;
+		getFirstChild(o.firstChild).style.marginTop=-c+"px";
+		window.setTimeout(function(){scrollup(o,d,c)},20);
+	}
+}
+function getFirstChild(node){
+	while(node.nodeType!=1){
+		node=node.nextSibling;
+	}
+	return node;
+}
+</SCRIPT>
+</DIV>
+<SCRIPT type=text/javascript>
+
+$(function(){
+
+	
+	$(".listTable tbody tr").hover(function(){
+		
+		$(this).css("background","#EBEBEB");
+
+	},function(){
+	
+		$(this).css("background","none");
+
+	});
+
+});
+
+</SCRIPT>
+
+<DIV class=content>
+<H3><A href="__ROOT__/index/getexpbyid/id/1">最新提交</A><A class=catrss 
+href="#"></A></H3>
+<TABLE class=listTable>
+  <THEAD>
+  <TR>
+    <TH width=90>提交日期</TH>
+    <TD width=800>漏洞名称</TD>
+    <TH width=60>作者</TH></TR></THEAD>
+  <TBODY>
+   <volist name="res1" id="vo1">
+  <TR>
+  
+
+    <TH>{$vo1['exp_post_time']}</TH>
+    <TD><A href="bugs/getdetailexp/postid/{$vo1['id']}">{$vo1['exp_post_title']}</A> 
+    </TD>
+    <TH><A href="__ROOT__/Whitehats/viewhitehat/id/{$vo1['euid']}">{$vo1['exp_username']}</A></TH>
+    
+ </TR>
+ </volist>
+  </TBODY></TABLE>
+
+<H3><A href="__ROOT__/index/getexpbyid/id/2">最新公开</A><A class=catrss 
+href="#"></A></H3>
+<TABLE class=listTable>
+  <THEAD>
+  <TR>
+    <TH width=90>提交日期</TH>
+    <TD width=800>漏洞名称</TD>
+    <TH width=60>作者</TH></TR></THEAD>
+  <TBODY>
+  <volist name="res2" id="vo2">
+  <TR>
+  
+
+    <TH>{$vo2['exp_post_time']}</TH>
+    <TD><A href="bugs/getdetailexp/postid/{$vo2['id']}">{$vo2['exp_post_title']}</A> 
+    </TD>
+    <TH><A href="__ROOT__/Whitehats/viewhitehat/id/{$vo2['euid']}">{$vo2['exp_username']}</A></TH>
+    
+ </TR>
+ </volist></TBODY></TABLE>
+<H3><A href="__ROOT__/index/getexpbyid/id/3">最新确认</A><A class=catrss 
+href="#"></A></H3>
+<TABLE class=listTable>
+  <THEAD>
+  <TR>
+    <TH width=90>提交日期</TH>
+    <TD width=800>漏洞名称</TD>
+    <TH width=60>作者</TH></TR></THEAD>
+  <TBODY>
+ <volist name="res3" id="vo3">
+  <TR>
+  
+
+    <TH>{$vo3['exp_post_time']}</TH>
+    <TD><A href="bugs/getdetailexp/postid/{$vo3['id']}">{$vo3['exp_post_title']}</A> 
+    </TD>
+    <TH><A href="__ROOT__/Whitehats/viewhitehat/id/{$vo3['euid']}">{$vo3['exp_username']}</A></TH>
+    
+ </TR>
+ </volist></TBODY></TABLE>
+<H3><A href="__ROOT__/index/getexpbyid/id/4">等待认领</A><A class=catrss 
+href="#"></A></H3>
+<TABLE class=listTable>
+  <THEAD>
+  <TR>
+    <TH width=90>提交日期</TH>
+    <TD width=800>漏洞名称</TD>
+    <TH width=60>作者</TH></TR></THEAD>
+  <TBODY>
+    <volist name="res4" id="vo4">
+  <TR>
+  
+
+    <TH>{$vo4['exp_post_time']}</TH>
+    <TD><A href="bugs/getdetailexp/postid/{$vo4['id']}">{$vo4['exp_post_title']}</A> 
+    </TD>
+    <TH><A href="__ROOT__/Whitehats/viewhitehat/id/{$vo4['euid']}">{$vo4['exp_username']}</A></TH>
+    
+ </TR>
+ </volist></TBODY></TABLE></DIV>
+
+<include file="Public:footer" />
+

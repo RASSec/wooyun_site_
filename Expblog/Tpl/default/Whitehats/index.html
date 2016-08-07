@@ -1,0 +1,64 @@
+<include file="Public:header" />
+	<div class="bread">
+		<div style="float:left">当前位置：<a href="__ROOT__">蓝天白云</a> >> <a href="">白帽子</a></div>
+			</div>
+<script type="text/javascript">
+
+$(function(){
+	
+	$(".listTable tbody tr").hover(function(){
+		
+		$(this).css("background","#EBEBEB");
+
+	},function(){
+	
+		$(this).css("background","none");
+
+	});
+
+});
+
+</script>
+</head>
+
+	
+	<div class="content">
+
+		<h2>白帽子</h2>
+
+		<p class="caption">蓝天白云将一切对安全极为感兴趣，对事物运行的原理有着天生的好奇心，愿意将技术回归技术，愿意为其他朋友做出贡献的人定义为白帽子，你可以通过在蓝天白云注册提交漏洞来成为白帽子中的一员</p>
+	
+		<table class="listTable">
+			<thead>
+				<tr>
+					<th width="120">注册日期</th>
+					<td width="670">昵称</td>
+					<td width="80">提交漏洞数</td>
+					
+				</tr>
+			</thead>
+			<tbody>
+			<volist name="list" id="vo">
+				<tr>
+					<th>{$vo['exp_regtime']}</th>
+					<td><a href="__ROOT__/Whitehats/viewhitehat/id/{$vo['id']}">{$vo['exp_username']}</a></td>
+					<th>{$vo['ceu']}</th>
+					
+				</tr>
+		
+
+			</volist>
+
+
+
+				
+			</tbody>
+		</table>
+
+		<p class="page">
+		{$page}
+				</p>
+
+	</div>
+
+<include file="Public:footer" />

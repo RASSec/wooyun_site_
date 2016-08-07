@@ -1,0 +1,69 @@
+<include file="Public:header" />
+ 
+	<div class="bread">
+		<div style="float:left">当前位置：<a href="__ROOT__">蓝天白云</a> >> <a href="#">{$cortype}</a></div>
+			</div>
+<script type="text/javascript"> 
+ 
+$(function(){
+	
+	$(".listTable tbody tr").hover(function(){
+		
+		$(this).css("background","#EBEBEB");
+ 
+	},function(){
+	
+		$(this).css("background","none");
+ 
+	});
+ 
+});
+ 
+</script>
+	
+	<div class="content">
+ 
+				<table class="classTable">
+			<tbody>
+				<tr>
+					<th width="130" valign="top">{$cname['exp_bugtype']}：</th>
+										<td>
+										<volist name="res" id="vo">
+											<a style="display:block; float:left; padding-right:20px; height:20px; overflow:hidden" href="{$cortypeid}/bugtype/{$vo['exp_category_id']}">{$vo['exp_bugtype']}</a>
+											</volist>
+										</td>
+				</tr>
+			</tbody>
+		</table>
+			
+	
+		<table class="listTable">
+			<thead>
+				<tr>
+					<th width="90">提交日期</th>
+					<td width="800">漏洞名称</td>
+					<th width="60">作者</th>
+				</tr>
+			</thead>
+			<tbody>
+ <volist name="vul" id="vo">
+
+ 
+								<tr>
+					<th>{$vo['exp_post_time']}</th>
+					<td><a href="__ROOT__/bugs/getdetailexp/postid/{$vo['vulid']}">{$vo['exp_post_title']}</a>
+										
+										</td>
+					<th><a href="__ROOT__/Whitehats/viewhitehat/id/{$vo['userid']}">{$vo['exp_username']}</a></th>
+				</tr>
+	</volist>				
+				
+			</tbody>
+		</table>
+ 
+		<p class="page">{$page}
+				</p>
+ 
+	</div>
+ 
+<include file="Public:footer" />

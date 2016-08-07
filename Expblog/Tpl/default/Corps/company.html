@@ -1,0 +1,88 @@
+<include file="Public:header" />
+
+	<div class="bread">
+		<div style="float:left">当前位置：<a href="/index.php">蓝天白云</a> >> <a href="">厂商信息</a></div>
+			</div>
+<script type="text/javascript">
+
+$(function(){
+	
+	$(".listTable tbody tr").hover(function(){
+		
+		$(this).css("background","#EBEBEB");
+
+	},function(){
+	
+		$(this).css("background","none");
+
+	});
+
+});
+
+</script>
+	
+	<div class="content">
+
+		<h2>{$list['exp_corpser']}<a class="corprss" href="/corps/Chinaren/rss"></a></h2>
+
+		<p class="caption" style="margin-top: 0;">{$list['exp_corps_intro']}</p>
+		
+		<h3>主页：{$list['exp_homepage']}</h3>
+
+		<table class="listTable">
+			<tbody>
+								<tr>
+					<td width="90" align="right"></td>
+					<td></td>
+				</tr>
+							</tbody>
+		</table>
+
+		<h3>漏洞列表：</h3>
+	
+		<table class="listTable">
+			<thead>
+				<tr>
+					<th width="90">提交日期</th>
+					<td width="800">漏洞名称</td>
+					<th width="60">状态</th>
+					<th width="60">作者</th>
+				</tr>
+			</thead>
+			<tbody>
+				<volist name="exploits" id="vo">
+								<tr>
+					<th><a href="#">{$vo['exp_post_time']}</a></th>
+					<td><a href="__ROOT__/bugs/getdetailexp/postid/{$vo['id']}">{$vo['exp_post_title']}</a></td>
+					<th><a href="#">
+
+					<if condition="vo.exp_ispub eq 0 "> 
+						<switch name="vo.exp_exploit_status">
+
+						<case value="0">待确认</case>
+						<case value="1">待确认</case>
+						<case value="3">已确认</case>
+						
+						<case value="2">已忽略</case>
+						<case value="4">已忽略</case>
+						
+					
+						
+						<default />
+
+						
+					</switch>
+					<else /> 已公开
+					
+					</if>
+					</a></th>
+					<th><a href="/whitehats/SnowGZ">SnowGZ</a></th>
+				</tr>
+				</volist>
+			</tbody>
+			
+		</table>
+
+	</div>
+
+<include file="Public:footer" />

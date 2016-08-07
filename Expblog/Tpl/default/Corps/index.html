@@ -1,0 +1,35 @@
+<include file="Public:header" />
+	<div class="bread">
+		<div style="float:left">当前位置：<a href="__ROOT__/">蓝天白云</a> >> <a href="">厂商列表</a></div>
+			</div>	
+	<div class="content">
+
+		<h2>厂商列表</h2>
+
+		<p class="caption">蓝天白云关注所有有力量影响互联网，改变人们生活的企业各种层面上的安全问题，你可以在蓝天白云注册为厂商来关注和修复自己企业的安全问题</p>
+	
+		<table class="listTable">
+			<tbody>
+			<volist name="list" id="vo">
+
+			
+				<tr>
+					<td width="130">{$vo['exp_addtime']}</td>
+					<td width="370"><a href="__ROOT__/Corps/company/id/{$vo['corps_id']}">{$vo['exp_corpser']}</a></td>
+					<td width="370"><a rel="nofollow" href="{$vo['exp_homepage']}" target="_blank">{$vo['exp_homepage']}</a></td>
+				</tr>
+				
+			</volist>
+
+				
+			</tbody>
+		</table>
+
+<p class="page">
+			{$page}
+				</p>
+
+
+	</div>
+
+<include file="Public:footer" />

@@ -1,0 +1,283 @@
+<include file="Public:header" />
+
+	<div class="bread">
+		<div style="float:left">当前位置：<a href="/index.php">蓝天白云</a> >> <a href="">漏洞提交</a></div>
+			</div>
+	<link href="__PUBLIC__/blog/js/editor/editor.css" rel="stylesheet" type="text/css"/>
+	<script src="__PUBLIC__/blog/js/editor.js" type="text/javascript"></script>
+
+	<div class="content">
+
+		<p class="whiteHatCaption caption">你可以提交关于厂商的各种漏洞，不局限于传统意义上的产品漏洞，包括网络配置，服务器管理，钓鱼欺诈甚至是有证据的黑客事件都可以作为有效的信息提交</p>
+
+		<Form action="bugsub/addexp" method="POST" onsubmit="return checkBlank();">
+
+			<table class="formTable">
+				<tr>
+					<th width="120">验证码：</th>
+					<td>
+						<input type="text" id="captcha" onblur="checkCaptcha(this.value)"  name="captcha" style="width:80px" />&nbsp;<img onclick="this.src='bugsub/verify?'+Math.random()" style="width:65px;height:18px;cursor:pointer" src="bugsub/verify" />
+						</span> <span id="captcha_error" class="error"></span>
+					</td>			
+				</tr>
+								<tr>
+				<th width="120">是否获取邀请码：</th>
+					<td>
+						<input type="radio" name="invite" id="invite" checked="checked" onclick="document.getElementById('email').value='';document.getElementById('invite_email').style.display = 'none';" value="0"/>
+						<label for="invite">否</label>
+						<input type="radio" name="invite" onclick="document.getElementById('invite_email').style.display = '';" value="1"/>
+						<label for="invite">是</label>
+					</td>
+				</tr>
+								<tr id="invite_email" style="display: none;">
+					<th width="120">邮箱：</th>
+					<td>
+						<input type="text" id="email" name="email">
+					</td>			
+				</tr>
+				<tr>
+					<th width="120">问题厂商类型：</th>
+					<td>
+						<input type="radio" name="corptype" id="netCorp" checked="checked" value="1"/>
+						<label for="netCorp">互联网厂商</label>
+						<input type="radio" name="corptype" id="tradition" value="2"/>
+						<label for="tradition">传统应用</label>
+						<span id="corptype_remark" class="remark"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>问题厂商：</th>
+					<td>
+						<select name="corpid" id="corpid"><option value='-1' selected="selected">--选择问题厂商--</option></select> 
+						<input type="text" name="corpname" id="corpname" style="display: none;" /><span id="corpid_remark" class="remark"></span> <span id="corpid_error" class="error"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>漏洞类型：</th>
+					<td>
+						<select name="bugtype" id="bugtype_level1">
+						</select>
+						<input type="text" style="display: none; width: 150px;" name="other_bugtype" id="other_bugtype" />
+						<select name="bug_subtype" id="bugtype_level2">
+						</select><span id="bugtype_remark" class="remark"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<th>漏洞标题：</th>
+					<td><input type="text" name="bugtitle" size="50" id="bugtitle"/><span id="bugtitle_remark" class="remark"></span> <span id="bugtitle_error" class="error"></span></td>
+				</tr>
+				<tr>
+					<th>漏洞等级：</th>
+					<td>
+						<select name="harmlevel" id="harmlevel"/>
+							<option selected="selected" value=''>--选择漏洞等级--</option>
+							<option value="1">低</option>
+							<option value="2">中</option>
+							<option value="3">高</option>
+						</select><span id="harmlevel_remark" class="remark"></span> <span id="harmlevel_error" class="error"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>自评Rank：</th>
+					<td><input type="text" name="whitehat_rank" size="15" id="whitehat_rank"/><span id="whitehat_rank_remark" class="remark"></span> <span id="whitehat_rank_error" class="error"></span></td>
+				</tr>
+				<tr>
+					<th valign="top">问题描述：</th>
+					<td><textarea rows="4" cols="70" name="description"></textarea><br/><span id="description_remark" class="remark"></span></td>
+				</tr>
+				
+				<tr>
+					<th valign="top">详细说明：</th>
+					<td><div class="editor">
+						<div id="editor_tools" class="tools"></div>
+						<textarea rows="4" cols="70" id="editor_content" name="content"></textarea>
+					</div>
+					<span id="content_remark" class="remark"></span></td>	
+				</tr>
+				<tr>
+					<th valign="top">漏洞证明：</th>
+					<td><div class="editor">
+						<div id="editor_tools1" class="tools"></div>
+						<textarea rows="4" cols="70" id="editor_content1" name="poc"></textarea>
+					</div>
+					<span id="poc_remark" class="remark"></span></td>
+				</tr>
+				<tr>
+					<th valign="top">漏洞修复：</th>
+					<td><div class="editor">
+						<div id="editor_tools2" class="tools"></div>
+						<textarea rows="4" cols="70" id="editor_content2" name="patch"></textarea>
+					</div>
+					<span id="patch_remark" class="remark"></span></td>
+				</tr>
+
+				<tr>
+					<th>&nbsp;</th>
+					<td><input type="submit" value="提交"/></td>
+				</tr>
+			</table>
+
+		</FORM>
+		<script type="text/javascript" src="__PUBLIC__/blog/js/common.js"></script>
+<script type="text/javascript">
+
+
+蓝天白云Editor("editor_content","editor_tools",[]);
+蓝天白云Editor("editor_content1","editor_tools1",[]);
+蓝天白云Editor("editor_content2","editor_tools2",[]);
+var URL = '__URL__'; 
+var APP  =  '__APP__'; 
+var PUBLIC = '__PUBLIC__'; 
+var Public = '../Public/'; 
+var SELF = '__SELF__'; 
+(function() {
+	loadCorpOptions("Bugsub/getcorpname", document.getElementById("corpid"), function(select) {
+		if (select.options.length == 1) {
+			document.getElementById("corpname").style.display = "inline";
+		}
+	});
+	$("#corpid").change(function() {
+		var select = document.getElementById("corpid");
+		if (parseInt(select.options[select.selectedIndex].value) == 0) {
+			document.getElementById("corpname").style.display = "inline";
+		} else {
+			document.getElementById("corpname").style.display = "none";
+		}
+	});
+
+	var level0 = 1;
+	var level1 = 1;
+	
+	function showOther() {
+		document.getElementById("other_bugtype").style.display = "inline";
+		document.getElementById("bugtype_level2").style.display = "none";
+	}
+	
+	function hideOther() {
+		document.getElementById("other_bugtype").style.display = "none";
+		document.getElementById("bugtype_level2").style.display = "inline";
+	}	
+
+	$("#netCorp").click(function() {
+		level0 = 1;
+		loadLevel1();
+		hideOther();
+	});
+	
+	$("#tradition").click(function() {
+		level0 = 2;
+		loadLevel1();	
+		hideOther();
+	});
+	
+	var loadLevel1 = function() {
+		loadOptions("Bugsub/getExp/id/"+level0, document.getElementById("bugtype_level1"), function(typeid) {
+			level1 = typeid;
+			var option = document.createElement("option");
+			document.getElementById("bugtype_level1").options.add(option);
+			option.value = "0";
+			option.innerHTML = "other";
+			loadLevel2();
+		});
+	}
+	
+	var loadLevel2 = function() {
+		loadOptions("Bugsub/getCExp/id/"+level1, document.getElementById("bugtype_level2"));
+	}
+	
+	loadLevel1();
+	
+	$("#bugtype_level1").change(function() {
+		var select = document.getElementById("bugtype_level1");
+		
+		if (parseInt(select.options[select.selectedIndex].value) == 0) {
+			showOther();
+			return;
+		} else {
+			hideOther();
+		}
+		
+		level1 = parseInt(select.options[select.selectedIndex].value);			
+		loadLevel2();
+	});
+})();
+
+initForm({
+		"corptype" : "该漏洞对应厂商的类型",
+		"corpid" : "该漏洞对应厂商的名称",
+		"bugtype" : "该漏洞的类型，乱选扣分",
+		"bugtitle" : "该漏洞的标题",
+		"harmlevel" : "该漏洞的危害等级",
+		"description" : "对漏洞的简要描述，可以简单描述漏洞的危害和成因，不要透漏漏洞的细节",
+		"content" : "对漏洞的详细描述，请尽量多的深入细节以方便对漏洞的理解",
+		"poc" : "给出问题的概念性证明",
+		"patch" : "建议的漏洞修复方案"
+});
+
+$('#harmlevel').change(function () {
+	$("#whitehat_rank_remark").css("display","inline");
+	if($("#harmlevel").val() == "1") {
+	    $("#whitehat_rank_remark").html("对漏洞rank进行自评，漏洞等级为 低 时，自评Rank为0-5！");
+	} else if($("#harmlevel").val() == "2") {
+	    $("#whitehat_rank_remark").html("对漏洞rank进行自评，漏洞等级为 中 时，自评Rank为5-10！");
+	} else if($("#harmlevel").val() == "3") {
+	    $("#whitehat_rank_remark").html("对漏洞rank进行自评，漏洞等级为 高 时，自评Rank为10-20！");
+	}
+});
+function checkBlank(){
+	
+	$(".remark,.error").empty();
+	
+	if($("#captcha").val() == ""){
+		$("#captcha_error").html("请输入图片中的验证码！");
+	}
+
+	if($("#corpid").val() == "--选择问题厂商--"){
+		$("#corpid_error").html("请选择问题厂商！");
+	}
+
+	if($("#bugtitle").val() == ""){
+		$("#bugtitle_error").html("漏洞标题不能为空！");
+	}
+
+	if($("#harmlevel").val() == "--选择漏洞等级--"){
+		$("#harmlevel_error").html("请选择漏洞等级！");
+	} else if($("#harmlevel").val() == "1" && ($("#whitehat_rank").val() > 5 || $("#whitehat_rank").val()<0 ) ) {
+		$("#whitehat_rank_error").html("漏洞等级为 低 时，自评Rank为0-5！");
+		return false;
+	} else if($("#harmlevel").val() == "2" && ($("#whitehat_rank").val() > 10 || $("#whitehat_rank").val()<5 ) ) {
+		$("#whitehat_rank_error").html("漏洞等级为 中 时，自评Rank为5-10！");
+		return false;
+	} else if($("#harmlevel").val() == "3" &&($("#whitehat_rank").val() > 20 || $("#whitehat_rank").val()<10 ) ) {
+		$("#whitehat_rank_error").html("漏洞等级为 高 时，自评Rank为10-20！");
+		return false;
+	}
+
+	if($("#whitehat_rank").val() == ""){
+		$("#whitehat_rank_error").html("请填写自评Rank！");
+	}
+
+	if($("#captcha").val() == "" || $("#corpid").val() == "--选择问题厂商--" || $("#bugtitle").val() == "" || $("#harmlevel").val() == "--选择漏洞等级--"){
+		return false;
+	}
+
+}
+
+function checkCaptcha(captcha){
+	if(captcha==""){
+		$("#captcha_error").html("请输入图片中的验证码！");
+	}else{
+		$.get("bugsub/checkcode",{"module":"checkcaptcha","captcha":captcha},function(data){
+			if(parseInt(data)!=1){
+				$("#captcha_error").html("验证码输入错误！");
+			}else{
+				$("#captcha_error").html("");
+			}
+		});
+	}
+}
+
+</script>
+	</div>
+<include file="Public:footer" />

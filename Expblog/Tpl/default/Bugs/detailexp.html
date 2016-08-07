@@ -1,0 +1,120 @@
+<include file="Public:header" />
+
+	<div class="bread">
+		<div style="float:left">当前位置：<a href="__ROOT__">蓝天白云</a> >> <a href="">漏洞信息</a></div>
+			</div>
+
+
+	<div class="content">
+
+		<h2>漏洞概要 </h2>
+		
+		<h3>缺陷编号：		Exploit-{$list['exp_post_no']}</h3>
+
+		<h3>漏洞标题：		{$list['exp_post_title']}  </h3>
+
+		<h3>相关厂商：		{$list['exp_corpser']}{$list['other_corpname']}</h3>
+
+		<h3>漏洞作者：		{$list['exp_username']}</h3>
+
+		<h3>提交时间：		{$list['exp_post_time']}</h3>
+				<h3>漏洞类型：		
+					
+				 {$list['other_bugtype']}
+				 {$list['exp_bugtype']}
+			
+
+				</h3>
+		
+		<h3>危害等级：		{$exp_hazard_rating}</h3>
+		
+		<h3>自评Rank：		{$list['exp_exploit_rank']}</h3>
+
+		<h3>漏洞状态：		{$exp_exploit_status}</h3>
+
+		<h3>漏洞来源：		{$list['exp_exploit_from']}</h3>
+	
+		<hr align="center"/>
+
+		<h2>漏洞详情</h2>
+		
+<h3 class="detailTitle">简要描述：</h3>
+
+		<p class="detail">{$list['exp_description']}</p><br>
+			<if condition="$list.exp_ok eq 0 "> 
+			<else /> 				
+						<h3 class="detailTitle">详细说明：</h3>
+		
+			<p class="detail">{$list['exp_content']}</p>
+				
+									<h3 class="detailTitle">漏洞证明：</h3>
+
+			<p class="detail">{$list['exp_content1']}</p>
+
+									<h3 class="detailTitle">修复方案：</h3>
+			<p class="detail">{$list['exp_exploit_fix']}</p>
+			
+			</if>
+		
+		<hr align="center"/>
+
+				
+			<h2>漏洞回应</h2>
+			
+			
+									<h3 class="detailTitle">厂商回应：</h3>
+					
+					<p class="detail">{$replay}</p>
+							
+					
+
+		
+		<h5><a href="/bug.php?action=dig&do=up&id=1950" class="up">顶<span>(0)</span></a><a href="/bug.php?action=dig&do=down&id=1950" class="down">踩<span>(0)</span></a></h5>
+
+<hr align="center" />
+<h2>评论</h2>
+<div class="comment">
+<dl class="commentlist">
+<volist name="msgs" id="vo">
+
+<dt>
+		{$vo['addtime']}<span class="user">{$vo['exp_username']}</span>
+</dt>
+	<dd>{$vo['content']}</dd>
+</volist>
+</dl>
+</div>
+<div class="reply">
+<present name="_SESSION['username']">
+<FORM action="__ROOT__/bugs/leavemsg" method="post" onsubmit="return CheckComment()">
+<p class="detail">
+<input type="hidden" id="postid" name="postid" value="{$list['id']}" />
+<textarea rows="4" cols="60" id="comment_content" name="comment_content" onclick="if(this.value=='点击输入评论内容') this.value=''">点击输入评论内容</textarea></p>
+<p class="detail">
+验证码 <input type="text" id="captcha" name="captcha" style="width:80px" />&nbsp;<img onclick="this.src='__ROOT__/bugs/verify?'+Math.random()" style="width:65px;height:18px;cursor:pointer" src="__ROOT__/bugs/verify" align="absmiddle" />
+&nbsp;&nbsp;<input type="submit" value="发表评论"/>
+</p>
+</FORM>
+<script type="text/javascript"> 
+ 
+function CheckComment(){
+	if($("#comment_content").val()=="" || $("#comment_content").val()=="点击输入评论内容"){
+		alert("请输入评论内容！");
+		return false;
+	}
+	if($("#captcha").val()==""){
+		alert("请输入验证码！");
+		return false;
+	}
+}
+</script>
+
+<else />
+<p class="detail">
+登录后才能发表评论，请先 <a href="__ROOT__/Whitehats/userlogin"><u>登录</u></a> 。
+</p>
+</present>
+<div>
+	</div>
+<include file="Public:footer" />
+</HTML>

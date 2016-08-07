@@ -1,0 +1,40 @@
+<include file="Public:header" />
+ 
+	<div class="bread">
+		<div style="float:left">当前位置：<a href="/index.php">蓝天白云</a> >> <a href="">回应信息</a></div>
+			</div>
+<script type="text/javascript"> 
+ 
+$(function(){
+	
+	$(".listTable tbody tr").hover(function(){
+		
+		$(this).css("background","#EBEBEB");
+ 
+	},function(){
+	
+		$(this).css("background","none");
+ 
+	});
+ 
+});
+ 
+</script>
+	
+	<div class="content">
+ 
+ <FORM method="post" action="__ROOT__/Managecorps/replaysave">
+		<h3>漏洞标题:{$list['exp_post_title']}</h3>
+		 	
+		<h3>漏洞状态：<select name="status">
+		<option value="3" selected>厂商已经确认</option>
+		</select></h3>
+		<h3>回复:<input type="hidden" name="postid" id="postid" value="{$list['id']}" /></h3>
+ 		<h3><textarea name="exp_replay" rows="15" cols="38">{$list['exp_replay']}</textarea></h3>
+ 		<br/>
+ 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="提交" />
+ 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value="重置" />
+	</FORM>
+	</div>
+ 
+<include file="Public:footer" />

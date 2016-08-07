@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="zh-CN">
+<head>
+	<title>蓝天白云 &rsaquo; 登录</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel='stylesheet' id='login-css'  href='__PUBLIC__/admin/css/login.css' type='text/css' media='all' />
+<link rel='stylesheet' id='colors-fresh-css'  href='__PUBLIC__/admin/css/colors-fresh.css' type='text/css' media='all' />
+<style type="text/css" media="screen">
+    body { font: 13px "Lucida Grande",Verdana,Arial,"Bitstream Vera Sans",sans-serif,"新宋体","宋体"; }
+    .submit input, .button, input.button, .button-primary, input.button-primary, .button-secondary, input.button-secondary, .button-highlighted, input.button-highlighted, #postcustomstuff .submit input { font-size: 12px !important; }
+</style>
+<meta name='robots' content='noindex,nofollow' />
+</head>
+<body class="login">
+<div id="login"><h1><a href="http://wordpress.org/" title="由 WordPress 架设">蓝天白云</a></h1>
+
+<FORM name="loginform" id="loginform" action="__URL__/checklogin" method="post">
+	<p>
+		<label>用户名<br />
+		<input type="text" name="uname" id="uname" class="input" value="" size="20" tabindex="10" /></label>
+	</p>
+	<p>
+		<label>密码<br />
+		<input type="password" name="passwd" id="passwd" class="input" value="" size="20" tabindex="20" /></label>
+	</p>
+	<p>
+		<label>验证码</label>
+		<br/>
+		<input type="text" name="code" id="code" class="input" value="" size="20" tabindex="20" /><img onclick="this.src='__URL__/verify?'+Math.random()" style="width:65px;height:18px;cursor:pointer" src="__URL__/verify" /></label>
+	</p>
+
+	<p class="submit">
+		<input type="submit" name="wp-submit" id="wp-submit" class="button-primary" value="登录" tabindex="100" />
+	</p>
+</Form>
+
+
+</div>
+<p id="backtoblog"><a href="__ROOT__" title="不知道自己在哪？">&larr; 回到 首页</a></p>
+
+<script type="text/javascript">
+function wp_attempt_focus(){
+setTimeout( function(){ try{
+d = document.getElementById('user_login');
+d.focus();
+d.select();
+} catch(e){}
+}, 200);
+}
+
+wp_attempt_focus();
+if(typeof wpOnload=='function')wpOnload();
+</script>
+</body>
+</html>

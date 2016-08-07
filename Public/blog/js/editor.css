@@ -1,0 +1,9 @@
+/* 蓝天白云Editor 1.0 */
+.editor { width:577px; height:120px; border:1px solid #D4D0C8; border-top: 1px solid #646464; border-left:2px solid #646464; font-size:12px; overflow:hidden }
+.editor .tools { padding:0 10px; background:#D7D6DC; height: 24px; line-height:24px; border-bottom: 1px solid #646464;}
+.editor .tools a { margin-right:15px; color:#000000; text-decoration:none; overflow:hidden }
+.editor textarea { width:100%; height:95px; margin:0; padding:0; border:0 }
+.editor .imgContainer { display:none; position:absolute; padding:10px; float:left; z-index:1000; width:330px; height:85px; border:1px solid #BBBBBB; background:#FFFFFF; overflow:hidden; cursor: default }
+.editor .imgContainer .imgIframe { margin:0; padding:0; border:0; width:100%; height:30px }
+.editor .imgContainer .imgButton { margin:0; padding:5px 0; text-align:center }
+.editor .imgContainer .imgButton input { margin-right:5px }

@@ -1,0 +1,127 @@
+<include file="Public:header" />
+ 
+	<div class="bread">
+		<div style="float:left">当前位置：<a href="/index.php">蓝天白云</a> >> <a href="">控制面板</a></div>
+			</div>
+<script type="text/javascript"> 
+ 
+$(function(){
+ 
+	$(".infoTab ul li a").click(function(){
+		var i = $(this).parent().index(".infoTab li");
+		var j = $(".infoTab ul li").length - i - 1;
+		$(".infoTab ul li").removeClass("current");
+		$(this).parent().addClass("current");
+		$(".infoContent").removeClass("block");
+		$(".infoContent").eq(j).addClass("block");
+	});
+ 
+	$(".infoTab li.current a").click(function(){
+		return false;
+	});
+ 
+});
+ 
+</script>
+ 
+	<div class="content">
+ 
+		<h2>{$vo['exp_corpser']|ucwords}的控制面板</h2>
+		
+		<div class="infoTab">
+			<ul>
+				<li><a href="javascript:void(0)">修改密码</a></li>
+				<li><a href="javascript:void(0)">联系方式</a></li>
+				<li class="current"><a href="javascript:void(0)">公司资料</a></li>
+			</ul>
+		</div>
+		
+		<FORM action="Managecorps/editinfo" method="POST">
+		<div class="infoContent block">
+			<table class="formTable">
+				<tbody>
+					<tr>
+						<th width="100">
+						厂商主页：
+						</th>
+						<td><input type="text" name="homepage" value="{$vo['exp_homepage']}"/></td>
+					</tr>
+					<tr>
+						<th valign="top">
+						厂商简介：
+						</th>
+						<td><textarea rows="4" cols="60" name="brief">{$vo['exp_corps_intro']}</textarea></td>
+					</tr>
+					<tr>
+						<th>&nbsp;</th>
+						<td><input type="submit" value="修改"/> <input type="button" value="取消"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		</FORM>
+		
+		<FORM action="Managecorps/editcontact" method="POST">
+		<div class="infoContent">
+			<table class="formTable">
+				<tbody>
+					<tr>
+						<th width="100">
+						姓名：
+						</th>
+						<td><input type="text" name="name" value="{$vo['exp_username']}"/></td>
+					</tr>
+					<tr>
+						<th width="100">
+						手机：
+						</th>
+						<td><input type="text" name="mobile" value="{$vo['corps_mobile']}"/></td>
+					</tr>
+					<tr>
+						<th width="100">
+						电话：
+						</th>
+						<td><input type="text" name="phone" value="{$vo['corps_telephone']}"/></td>
+					</tr>
+					
+					<tr>
+						<th>&nbsp;</th>
+						<td><input type="submit" value="修改"/> <input type="button" value="取消"/></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			
+		</div>
+		</FORM>
+ 
+		<FORM action="Managecorps/modifypasswd" method="POST">
+		
+			<div class="infoContent">
+				<table class="formTable">
+					<tbody>
+						<tr>
+							<th width="100">原密码：</th>
+							<td><input type="password" name="password"/></td>
+						</tr>
+						<tr>
+							<th>新密码：</th>
+							<td><input type="password" name="password1"/></td>
+						</tr>
+						<tr>
+							<th>新密码确认：</th>
+							<td><input type="password" name="password2"/></td>
+						</tr>
+						<tr>
+							<th>&nbsp;</th>
+							<td><input type="submit" value="提交"/></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+ 
+		</FORM>
+ 
+	</div>
+ 
+<include file="Public:footer" />

@@ -1,0 +1,57 @@
+<include file="Public:header" />
+
+	<div class="bread">
+		<div style="float:left">当前位置：<a href="#">蓝天白云</a> >> <a href="">厂商注册</a></div>
+			</div>
+<FORM id="checkl" name="checkl" action=reg method=post>	
+	<div class="content">
+		<table class="formTable">
+			<tbody>
+				<tr>
+				<th width="100">厂商名：</th>
+					<td><input type="text" id="corps" name="corps" value="" style="width:150px" />&nbsp;<font color="red">(必填)</font></td>
+					
+				</tr>
+				<tr>
+				<th width="100">厂商主页：</th>
+					<td><input type="text" id="homepage" name="homepage" value="" style="width:150px" />&nbsp;<font color="red">(必填)</font></td>
+					
+				</tr>
+
+				<tr>
+					<th width="100">E-mail：</th>
+					<td><input type="text" id="email" name="email" value="" style="width:150px" />&nbsp;<font color="red">(必填)</font></td>
+				</tr>
+				<tr>
+					<th>密码：</th>
+					<td><input type="password" id="password" name="password" style="width:150px" />&nbsp;<font color="red">(必填)</font></td>
+				</tr>
+					<tr>
+					<th>再次密码：</th>
+					<td><input type="password" id="password1" name="password1" style="width:150px" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+				<tr>
+					<th>验证码：</th>
+					<td><input type="text" id="verify" name="verify" style="width:80px" />&nbsp;<img onclick="this.src='__ROOT__/Whitehats/verify?'+Math.random()" style="width:65px;height:18px;cursor:pointer" src="__ROOT__/Whitehats/verify" /></td>
+				</tr>
+				<tr>
+					<th width="100">邀请码：</th>
+					<td><input type="text" id="invitecode" name="invitecode" value="" style="width:150px" /></td>
+				</tr>
+				<tr>
+					<th width="100">厂商介绍：</th>
+					<td><textarea name="corps_intro" rows="9" cols="19"></textarea></td>
+				</tr>
+				<tr>
+					<th>&nbsp;</th>
+					<td><input type="submit" value="注册"/></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+</FORM>
+
+<include file="Public:footer" />

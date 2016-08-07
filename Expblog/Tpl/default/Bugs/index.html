@@ -1,0 +1,81 @@
+<include file="Public:header" />
+	<div class="bread">
+		<div style="float:left">当前位置：<a href="__ROOT__">蓝天白云</a> >> <a href="">漏洞列表</a></div>
+			</div>
+<script type="text/javascript">
+
+$(function(){
+	
+	$(".listTable tbody tr").hover(function(){
+		
+		$(this).css("background","#EBEBEB");
+
+	},function(){
+	
+		$(this).css("background","none");
+
+	});
+
+});
+
+</script>
+	
+	<div class="content">
+
+				<table class="classTable">
+			<tbody>
+				<tr>
+					<th width="130" valign="top">互联网厂商：</th>
+										<td>
+										<volist name="cat1" id="vo">
+
+											<a style="display:block; float:left; padding-right:20px; height:20px; overflow:hidden" href="__ROOT__/bugs/categoryexp/cortype/1/id/{$vo['exp_category_id']}">{$vo['exp_bugtype']}</a>
+										
+										</volist>
+										</td>
+				</tr>
+			</tbody>
+		</table>
+				<table class="classTable">
+			<tbody>
+				<tr>
+					<th width="130" valign="top">传统应用厂商：</th>
+										<td>
+										<volist name="cat2" id="vo">
+											<a style="display:block; float:left; padding-right:20px; height:20px; overflow:hidden" href="__ROOT__/bugs/categoryexp/cortype/2/id/{$vo['exp_category_id']}">{$vo['exp_bugtype']}</a>
+											
+										</volist>
+										</td>
+				</tr>
+			</tbody>
+		</table>
+			
+	
+		<table class="listTable">
+			<thead>
+				<tr>
+					<th width="90">提交日期</th>
+					<td width="800">漏洞名称</td>
+					<th width="60">作者</th>
+				</tr>
+			</thead>
+			<tbody>
+		<volist name="list" id="vo">
+								<tr>
+					<th>{$vo['exp_post_time']}</th>
+					<td><a href="bugs/getdetailexp/postid/{$vo['id']}">{$vo['exp_post_title']}</a>
+										</td>
+					<th><a href="#">{$vo['exp_username']}</a></th>
+				</tr>
+			</volist>
+				
+			</tbody>
+		</table>
+
+		<p class="page">
+		    {$page}
+				</p>
+
+	</div>
+
+<include file="Public:footer" />

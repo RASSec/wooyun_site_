@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<link rel="stylesheet" href="__PUBLIC__/admin/css/common.css" type="text/css" />
+<title>会员编辑修改</title>
+ <script src="__PUBLIC__/admin/js/jquery.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+<div id="man_zone">
+  <table width="99%" border="0" align="center"  cellpadding="3" cellspacing="1" class="table_style">
+   <FORM method="post" id="member" name="member" action="">
+    <tr>
+      <td width="18%" class="left_title_1"><span class="left-title">用户名:</span></td>
+      <td width="10%">&nbsp;<input type="text" name="username" id="username" value="{$user['exp_username']}" /></td>
+      <td width="10%" class="left_title_1" >会员IP地址</td>
+      <td><input type="text" name="ipaddress" id="ipaddress" value="{$user['exp_ip']}" /></td>
+    </tr>
+    
+    <tr>
+      <td class="left_title_2">会员注册时间</td>
+      <td>&nbsp;<input type="text" name="regtime" id="regtime" value="{$user['exp_regtime']}" /> </td>
+         <td class="left_title_2">会员Email</td>
+      <td>&nbsp; <input type="text" name="email" id="email" value="{$user['exp_useremail']}" /></td>
+    </tr>
+        <tr>
+  	  <td class="left_title_1">会员个人主页:</td>
+      <td>&nbsp;<input type="text" name="homepage" id="homepage" value="{$user['exp_homepage']}" /></td>
+      <td class="left_title_1">真实姓名:</td>
+      <td><input type="text" name="truename" id="truename" value="{$user['exp_truename']}" /></td>
+    </tr>
+    <tr>
+    	<td class="left_title_1">手机:</td>
+    	<td><input type="text" name="mobile" id="mobile" value="{$user['exp_mobile']}" /></td>
+    	<td class="left_title_1">座机:</td>
+    	<td><input type="text" name="telephone" id="telephone" value="{$user['exp_telephone']}" /></td>
+    </tr>
+    <tr>
+      <td class="left_title_2">邮编</td>
+      <td>&nbsp;<input type="text" name="postcode" id="postcode" value="{$user['exp_postalcode']}" /></td>
+       <td class="left_title_2">审核状态</td>
+    	<td>
+    	<select name="confirm">
+    		<option value="0" {$sec0}>锁定</options>
+    		<option value="1" {$sec1}>审核</option>
+    		<option value="2" {$sec2}>激活</option>
+    	</select>
+    	</td>
+    </tr>
+        <tr>
+      <td class="left_title_2">个人简介</td>
+      <td>&nbsp;<textarea cols="20" rows="8" name="exp_userprofile">{$user['exp_userprofile']}</textarea></td>
+       <td class="left_title_2">用户地址</td>
+    	<td><textarea cols="20" rows="8" name="exp_useraddress">{$user['exp_useraddress']}</textarea></td>
+    </tr>
+    <tr>
+      <td class="left_title_1">&nbsp;</td>
+      <td>&nbsp;<input type="hidden" name="id" value="{$user['id']}" /><input type="submit" name="sub" value="提交" />&nbsp;&nbsp;&nbsp;<input type="button" onclick="javascript:history.back(-1);" value="返回"/></td>
+        	<td></td>
+    	<td></td>
+    </tr>
+    </FORM>
+  </table>
+</div>
+</body>
+</html>
